@@ -1,0 +1,9 @@
+nombre;descripcion;tipo
+Efectivo;Todo el efectivo;ACTIVO
+Caja Espanha;Cuenta de ahorros espanhna;ACTIVO
+Por Cobrar;Deudas por cobrar;ACTIVO
+Sparkasse KL;Cuenta de ahorros alemania;ACTIVO
+Por Pagar;Deudas por pagar;PASIVO
+Patrimonio;Total Patrimonio;PATRIMONIO
+Compras supermercado;Gasto en las compras de supermercado;PASIVO
+Gasto entretenimiento;Cine, salidas fin de semana, etc;PASIVO

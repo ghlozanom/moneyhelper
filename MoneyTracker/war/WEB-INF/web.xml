@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+	<context-param>
+	  <param-name>resourcesPath</param-name>
+	  <param-value>WEB-INF/classes/resources/</param-value>
+	</context-param>
+
+	<!-- Main servlet for mobile requests -->
+	<servlet>
+	  <servlet-name>MobilServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.MobilServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>MobilServlet</servlet-name>
+	  <url-pattern>/</url-pattern>
+	</servlet-mapping>  
+	
+	<!-- Servlet para las peticiones de CuentaUsuario -->
+	<servlet>
+	  <servlet-name>CuentaUsuarioServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.CuentaUsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>CuentaUsuarioServlet</servlet-name>
+	  <url-pattern>/CuentaUsuario</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- Servlet para las peticiones de movimientos -->
+	<servlet>
+	  <servlet-name>MovimientoServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.MovimientoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>MovimientoServlet</servlet-name>
+	  <url-pattern>/Movimiento</url-pattern>
+	</servlet-mapping>  	
+	
+	<!-- Servlet para el ingreso de gasto -->
+	<servlet>
+	  <servlet-name>GastoServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.GastoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>GastoServlet</servlet-name>
+	  <url-pattern>/Gasto</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- Servlet para el cambio de cuenta usuario -->
+	<servlet>
+	  <servlet-name>CambioCuentaUsuarioServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.CambioCuentaUsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>CambioCuentaUsuarioServlet</servlet-name>
+	  <url-pattern>/CambioCuentaUsuario</url-pattern>
+	</servlet-mapping>  	
+	
+	<servlet>
+	  <servlet-name>MovimientoDeleteServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.MovimientoDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>MovimientoDeleteServlet</servlet-name>
+	  <url-pattern>/MovimientoDelete</url-pattern>
+	</servlet-mapping>    
+	
+	<!-- Servlet para las peticiones de tipos de cuenta -->
+	<servlet>
+	  <servlet-name>TipoCuentaServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.TipoCuentaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>TipoCuentaServlet</servlet-name>
+	  <url-pattern>/TipoCuenta</url-pattern>
+	</servlet-mapping> 	
+	
+	<!-- Servlet para las peticiones de contabilidad usuario -->
+	<servlet>
+	  <servlet-name>ContabilidadUsuarioServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.ContabilidadUsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ContabilidadUsuarioServlet</servlet-name>
+	  <url-pattern>/ContabilidadUsuario</url-pattern>
+	</servlet-mapping> 	
+	
+	<!-- Servlet para traer saldos de cuenta por usuario -->
+	<servlet>
+	  <servlet-name>SaldoCuentaPorUsuarioServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.SaldoCuentaPorUsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>SaldoCuentaPorUsuarioServlet</servlet-name>
+	  <url-pattern>/saldoCuentaPorUsuario</url-pattern>
+	</servlet-mapping>   	
+	
+	<!-- Servlet para traer saldos de cuenta por usuario -->
+	<servlet>
+	  <servlet-name>SaldoCuentaParticularPorUsuarioServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.SaldoCuentaParticularPorUsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>SaldoCuentaParticularPorUsuarioServlet</servlet-name>
+	  <url-pattern>/saldoCuentaParticularPorUsuario</url-pattern>
+	</servlet-mapping>  	
+	
+	<!-- Servlet para las peticiones de Gastos -->
+	<servlet>
+	  <servlet-name>GastosServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.GastosServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>GastosServlet</servlet-name>
+	  <url-pattern>/verGastos</url-pattern>
+	</servlet-mapping>  
+	
+	<!-- Servlet para traer mas movimientos con el cursor -->
+	<servlet>
+	  <servlet-name>ConsultaMovimientoServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.ConsultaMovimientoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ConsultaMovimientoServlet</servlet-name>
+	  <url-pattern>/ConsultaMovimientoSiguienteCursor</url-pattern>
+	</servlet-mapping>		
+	
+	 <!-- Servlet para traer detalle de movimiento -->
+	 <servlet>
+	   <servlet-name>DetalleMovimientoServlet</servlet-name>
+	   <servlet-class>com.gabloz.moneytracker.web.servlet.DetalleMovimientoServlet</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	   <servlet-name>DetalleMovimientoServlet</servlet-name>
+	   <url-pattern>/detalleMovimiento</url-pattern>
+	 </servlet-mapping>    	
+	 
+	<!-- Servlet para traer detalle de cuenta de usuario -->
+	<servlet>
+	  <servlet-name>DetalleCuentaUsuarioServlet</servlet-name>
+	  <servlet-class>com.gabloz.moneytracker.web.servlet.DetalleCuentaUsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>DetalleCuentaUsuarioServlet</servlet-name>
+	  <url-pattern>/detalleCuentaUsuario</url-pattern>
+	</servlet-mapping>  	 
+	
+	<servlet>
+	  <servlet-name>SystemServiceServlet</servlet-name>
+	  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+	  <init-param>
+	    <param-name>services</param-name>
+	    <param-value/>
+	  </init-param>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>SystemServiceServlet</servlet-name>
+	  <url-pattern>/_ah/spi/*</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- Context Listener -->
+  	<listener>
+    	<listener-class>
+     		com.gabloz.moneytracker.web.listener.MyContextListener
+    	</listener-class>
+  	</listener>
+	
+</web-app>

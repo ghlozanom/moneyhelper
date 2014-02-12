@@ -1,0 +1,31 @@
+<div id="detalleCuentaUsuarioPage" data-role="page" >        
+
+	<div data-role="header" data-position="fixed" data-theme="b" >
+	   <a href="#homePage" data-role="button" data-icon="home" data-iconpos="notext"  >Volver</a>
+	   <h1 id="nombreCuentaUsuarioHeader">Cuenta Usuario</h1>
+	</div>
+   
+    <form id="cambiarCuentaUsuarioForm" action="/Movimiento" method="post" data-ajax="false"  > 
+     
+    <div data-role="content"> 
+    
+		<div>
+			<div style=" float: left; ">
+				<span>Saldo:</span>    
+			</div>       
+			<div style="float: right; max-width: 50%">
+				<input id="saldoCuentaUsuario" type="number" name="saldoCuentaUsuario" value=""  />
+			</div>         
+		</div>
+		
+		<div style="clear: both; padding-top: 10px;">
+			<input type="hidden" name="cuentaUsuarioKey" id="cuentaUsuarioKey" />
+			<input type="submit" value="Guardar" data-icon="check" data-mini="true"  />
+	    </div>
+	    
+	</div> <!-- content role -->  
+    
+    </form>
+   
+ 
+</div><!-- ingresarMovimientoPage div -->         

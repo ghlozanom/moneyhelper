@@ -1,0 +1,93 @@
+<div id="verMovimientosPage" data-role="page" >        
+
+	<div data-role="header" data-position="fixed" data-theme="b" >
+	   <a href="#homePage" data-role="button" data-icon="home" data-iconpos="notext"  >Inicio</a>
+	   <h1>Movimientos</h1>
+	   <a href="#ingresarMovimientoPage" data-icon="plus" data-iconpos="notext" ></a>
+	</div>
+     
+     
+    <div data-role="content">                     
+		<div>
+			<ul id="listMovimientos" data-role="listview" data-filter="true" data-filter-placeholder="Filtre movimientos...">               
+				<li data-role="list-divider" id="movimientoPrincipal">
+					<div >Valor(EUR), descripcion, fecha</div>
+				</li>       	               
+	                    
+				<%
+					MovimientoWebBO movimientoWebBO = new MovimientoWebBO();
+					Object[] movimientosPorUsuario = movimientoWebBO.findByUsuario(usuario.getNickname());
+					Collection<Movimiento> movimientos = (Collection<Movimiento>) movimientosPorUsuario[0];
+					for (Movimiento movimiento : movimientos) {
+				%>               
+				<li class="movimientoItem">
+					<a href="#">   
+						<div class="ui-block-a">
+							<%="" + movimiento.getDescripcionMovimiento()%>
+						</div>
+						<div style="clear: both;max-width:90%; overflow: hidden;">
+							<%="" + movimiento.getDescripcion()%>
+						</div>		               	
+					</a>
+				</li>   
+				<%
+					}
+				%> 
+				<li class="modeloMovimiento" >
+					<a href="#" >   
+						<div class="ui-block-a">
+							<span class="descripcionMovimiento"></span>
+						</div>
+						<div style="clear: both;max-width:90%; overflow: hidden;">
+							<span class="descripcionMovimiento2"></span>
+						</div>		               	
+					</a>
+				</li>				      
+			</ul>
+		</div>
+		
+		<% if( ""+ movimientosPorUsuario[1] != "-1" ) { %>
+		
+		    <div class="info" style="margin-top: 30px;">
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><a id="botonRefrescarMovimientos" href="javascript: refresqueMovimientos();" data-role="button" >Reset</a></div>
+					<div class="ui-block-b"><a id="botonActualizacionMovimientos" href="javascript: actualiceMovimientos('<%="" + movimientosPorUsuario[1]%>');" data-role="button" >Anteriores</a></div>	
+				</fieldset>
+	    	</div>           	              
+	    <% } %>
+	    
+	</div> <!-- content role -->  
+    
+	<li class="movMuster" >
+		<a href="#">
+			<div><span class="valorEntrada"></span></div>
+		</a>
+	</li>    
+	
+	<li class="modeloConcepto">
+		<a>
+			<span class="nombreConcepto"></span>
+			<p class="ui-li-aside">
+				<strong><span class="saldoConcepto"></span> </strong>EUR
+			</p>
+		</a>
+	</li> 	    
+	
+	<li class="modeloTotalGastos">Total</span>
+		<p class="ui-li-aside">
+			<strong><span class="totalGastos"></span> </strong>EUR
+		</p>
+	</li> 	
+   
+    <div data-role="footer" data-position="fixed" data-id="footerNav" data-theme="b" >
+
+       <div data-role="navbar" data-iconpos="top">
+           <ul>
+               <li><a href="#homePage" data-icon="home" >Home</a></li>
+               <li><a href="#verMovimientosPage" data-icon="gear" class="ui-btn-active ui-state-persist">Movimientos</a></li>
+               <li><a href="#userPage" data-icon="gear" >User</a></li>
+           </ul>
+       </div><!-- /navbar -->
+
+   	</div><!-- Footer content -->   
+</div><!-- ingresarMovimientoPage div -->         

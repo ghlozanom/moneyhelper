@@ -1,0 +1,179 @@
+<div id="verGastosPage" data-role="page" >
+
+	<div data-role="header" data-position="fixed" data-theme="b" >
+	   <a href="#homePage" data-role="button" data-icon="home" data-iconpos="notext"  >Inicio</a>
+	   <h1>Gastos</h1>
+	   <a href="#ingresarGastoPage" data-icon="plus" data-iconpos="notext" ></a>
+	</div>
+	
+	<div data-role="content" >
+	
+		<div>
+			<ul id="listGastos" data-role="listview">
+				<li class="modeloGasto" >   
+					<div class="ui-block-a">
+						<span class="descripcionMovimiento"></span>
+					</div>
+					<div style="clear: both;max-width:90%; overflow: hidden;">
+						<span class="descripcionMovimiento2"></span>
+					</div>		               	
+				</li>				      
+			</ul>
+		</div>
+		
+		
+	    <div class="info" style="margin-top: 30px;">
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><a id="botonRefrescarGastos" href="javascript: refresqueGastos();" data-role="button" >Reset</a></div>
+				<div class="ui-block-b"><a id="botonActualizacionGastos" href="javascript: actualiceGastos('<%="" + movimientosPorUsuario[1]%>');" data-role="button" >Anteriores</a></div>	
+			</fieldset>
+	    </div>           	              
+	
+		<ul data-role="listview" data-inset="true" >
+			<li>
+				<a href="#gastosPorConceptoPage">Consultar gastos por concepto</a>
+			</li>
+		</ul>	
+	
+	</div>
+	
+	<div data-role="footer" data-position="fixed" data-id="footerNav"
+		data-theme="b">
+	
+		<div data-role="navbar" data-iconpos="top">
+			<ul>
+				<li><a href="#homePage" data-icon="info"
+					class="ui-btn-active ui-state-persist">Cuentas</a></li>
+				<li><a href="#verMovimientosPage" data-icon="gear">Movimientos</a></li>
+				<li><a href="#userPage" data-icon="gear">User</a></li>
+			</ul>
+		</div>
+		<!-- /navbar -->
+	
+	</div>
+	<!-- Footer content -->	
+</div>
+
+<div id="gastosPorConceptoPage" data-role="page" > 
+
+	<div data-role="header" data-position="fixed" data-theme="b" >
+	   <a href="#verGastosPage" data-role="button" data-icon="back" data-iconpos="notext"  ></a>
+	   <h1>Gastos</h1>
+	</div>
+	
+	<div data-role="content" id="mainContent">
+		<form id="verGastosForm" action="/verGastos" method="post" data-ajax="false"  >
+			<input id="ingresoConcepto" type="hidden" name="concepto" value="">
+			<div data-role="fieldcontain">
+				<div style="margin-top: 3px;">
+			   		<div style="float: left; ">
+			       		<span>Fecha</span>    
+			   		</div>       
+			       	<div style="float: right; max-width: 50%">
+			           <input type="date" name="fecha" id="fechaGasto" value=""  />
+			       	</div>
+				</div>	           
+			</div> 				
+			<div style="clear: both;" >
+				<input type="submit" value="Consultar" data-icon="check" data-mini="true"  />
+			</div>
+			
+			<ul id="listaGastos" data-role="listview" data-inset="true">
+			</ul>           
+			
+			<ul id="listaTotalGastos" data-role="listview" data-inset="true">
+			</ul>			  	
+		</form>
+	</div>	
+</div>	
+
+
+<div id="ingresarGastoPage" data-role="page" >    
+
+	<div class="ui-loader-background"> </div>    
+	       
+	<form id="insertarGastoForm" action="/Movimiento" method="post" data-ajax="false"  >
+	
+		<div data-role="header" data-position="fixed" data-theme="b" >
+		   <a href="#verGastosPage" data-role="button" data-icon="arrow-l" data-iconpos="notext"  ></a>
+		   <h1>Nuevo Gasto</h1>
+		</div>
+	     
+		<div data-role="content">
+	                 
+			<ul data-role="listview" data-inset="true">
+				<li data-role="fieldcontain">
+					<div data-role="fieldcontain"> 
+						<div style="float:left; ">
+							<h3>De donde salio:</h3>                    
+						</div>
+						<input type="hidden" name="tipoOp1" value="SALIDA">    
+						
+	                   	<div style="clear: both">
+							<select name="idCuenta1" id="tipoItem1" data-mini="true" >
+								<%
+									for (TipoCuenta tipoCuenta : tipoCuentaList1) {
+								%>
+									<option value="<%=tipoCuenta.getKey().getId()%>"><%=tipoCuenta.getNombre()%></option>
+								<%
+									}
+								%>
+							</select>                   
+	                   	</div>	                    
+	               	</div>                
+	               
+	               <!--Un gasto siempre es salida de patrimonio-->
+	                <input type="hidden" name="tipoOp2"   value="SALIDA">
+	                <input type="hidden" name="idCuenta2" value="<%=tipoCuentaBO.getIdCuenta("Patrimonio")%>">                           
+	              
+	               	<div data-role="fieldcontain">
+	               
+	                   	<div style="float:left;">
+                    		<h3>Concepto</h3>
+	                   	</div>                  
+						<div style="clear: both">
+							<select name="concepto" id="conceptoGasto" data-mini="true" >
+								<%
+									for (Concepto concepto : conceptoList) {
+								%>
+									<option value="<%=concepto.getNombre()%>"><%=concepto.getNombre()%></option>
+								<%
+									}
+								%>
+							</select>   
+						</div>  
+	             	</div>              
+	              
+	             	<div data-role="fieldcontain" >  
+						<div style="margin-top: 3px;">
+							<div style="float: left; ">
+								<span>Fecha</span>    
+							</div>       
+							<div style="float: right; max-width: 50%">
+								<input type="date" name="fecha" id="fechaGasto" value=""  />
+							</div>
+						</div>     
+	                   
+	                   	<div style="clear: both; padding-top: 10px;">
+	                       	<div style=" float: left; ">
+	                        	<span>Monto (EUR)</span>    
+	                       	</div>       
+	                       	<div style="float: right; max-width: 50%">
+	                        	<input id="valorInputGasto" type="number" name="valor" value=""  />
+	                       	</div>         
+	                   	</div>            
+	                   
+	                   	<div style="clear: both; padding-top: 10px;">
+	                        <span>Descripcion</span>
+	                       	<input type="text" name="descripcion" id="descripcionGasto" value="" placeholder=""/>
+	                   	</div>                               
+	             	</div>                 
+      			</li>  	                                    
+   			</ul><!-- Listview -->
+	       
+	       	<input type="submit" value="Guardar Gasto" data-icon="check" data-mini="true"  />
+	       	
+    	</div> <!-- content role -->    
+ 	</form>    
+ </div><!-- ingresarGastoPage div -->        
+

@@ -1,0 +1,131 @@
+
+
+<div id="ingresarMovimientoPage" data-role="page" >    
+
+	<div class="ui-loader-background"> </div>    
+	       
+	<form id="insertarMovimientoForm" action="/Movimiento" method="post" data-ajax="false"  >
+	
+		<div data-role="header" data-position="fixed" data-theme="b" >
+		   <a href="#verMovimientosPage" data-role="button" data-icon="arrow-l" data-iconpos="notext"  ></a>
+		   <h1>Nuevo Movimiento</h1>
+		</div>
+	     
+		<div data-role="content">
+	                 
+			<ul data-role="listview" data-inset="true">
+				<li data-role="fieldcontain">
+					<div data-role="fieldcontain">     
+						<div style="float:left; ">
+							<h3>Item1</h3>                    
+						</div>
+	                   
+	                   	<div style="min-width:190px; position: absolute; right:0px;">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
+								<input type="radio" name="tipoOp1" id="radio-choice-1" value="ENTRADA" checked="checked" />
+							    <label for="radio-choice-1" id="ENTRADALabel">Entrada</label>
+							    <input type="radio" name="tipoOp1" id="radio-choice-2" value="SALIDA"  />
+							    <label for="radio-choice-2" id="SALIDALabel" >Salida</label>
+							</fieldset>
+	                   	</div>
+	                   	<div style="clear: both">
+							<select name="idCuenta1" id="tipoItem1" data-mini="true" >
+								<%
+									TipoCuentaBO tipoCuentaBO = new TipoCuentaBO();
+									List<TipoCuenta> tipoCuentaList1 = tipoCuentaBO.findAll();
+									for (TipoCuenta tipoCuenta : tipoCuentaList1) {
+								%>
+								<option value="<%=tipoCuenta.getKey().getId()%>"><%=tipoCuenta.getNombre()%></option>
+								<%
+									}
+								%>
+							</select>                   
+	                   	</div>	                    
+	               	</div>                
+	               
+	               	<div data-role="fieldcontain">
+	                   	<div style="float:left;">
+	                       <h3>Item2</h3>
+	                   	</div>   
+	                    <div style="min-width:190px; position: absolute; right:0px;">
+                    		<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
+	                            <input type="radio" name="tipoOp2" id="radio-choice-111" value="ENTRADA" checked="checked" />
+	                            <label for="radio-choice-111">Entrada</label>
+	                            <input type="radio" name="tipoOp2" id="radio-choice-211" value="SALIDA"  />
+	                            <label for="radio-choice-211">Salida</label>
+	                       	</fieldset>
+	                   	</div>
+	                   	<div style="clear: both">
+							<select name="idCuenta2" id="tipoItem2" data-mini="true" >
+								<%
+									List<TipoCuenta> tipoCuentaList2 = tipoCuentaBO.findAll();
+									for (TipoCuenta tipoCuenta : tipoCuentaList2) {
+								%>
+								<option value="<%=tipoCuenta.getKey().getId()%>"><%=tipoCuenta.getNombre()%></option>
+								<%
+									}
+								%>
+							</select>   
+	                  	</div>                            
+	              	</div>
+	              
+	               	<div data-role="fieldcontain">
+	               
+	                   	<div style="float:left;">
+                    		<h3>Concepto</h3>
+	                   	</div>                  
+						<div style="clear: both">
+							<select name="concepto" id="concepto" data-mini="true" >
+									<option value="">No Aplica</option>
+								<%
+									ConceptoBO conceptoBO = new ConceptoBO();
+									List<Concepto> conceptoList = conceptoBO.findAll();
+									for (Concepto concepto : conceptoList) {
+								%>
+									<option value="<%=concepto.getNombre()%>"><%=concepto.getNombre()%></option>
+								<%
+									}
+								%>
+							</select>   
+						</div>  
+	             	</div>              
+	              
+	             	<div data-role="fieldcontain" >  
+						<div style="margin-top: 3px;">
+							<div style="float: left; ">
+								<span>Fecha</span>    
+							</div>       
+							<div style="float: right; max-width: 50%">
+								<input type="date" name="fecha" id="fechaMovimiento" value=""  />
+							</div>
+						</div>     
+	                   
+	                   	<div style="clear: both; padding-top: 10px;">
+	                       	<div style=" float: left; ">
+	                        	<span>Monto (EUR)</span>    
+	                       	</div>       
+	                       	<div style="float: right; max-width: 50%">
+	                        	<input id="valorInput" type="number" name="valor" value=""  />
+	                       	</div>         
+	                   	</div>            
+	                   
+	                   	<div style="clear: both; padding-top: 10px;">
+	                        <span>Descripcion</span>
+	                       	<input type="text" name="descripcion" id="descripcion" value="" placeholder=""/>
+	                   	</div>                               
+	             	</div>                 
+      			</li>  	                                    
+   			</ul><!-- Listview -->
+	       
+	       	<input type="submit" value="Guardar" data-icon="check" data-mini="true"  />
+	       	
+    	</div> <!-- content role -->   
+	   
+	  	<div data-role="footer" data-position="fixed">
+	    	<div class="info">Acs.: $<span class="activos">N/A</span>
+	              , Pas.: $<span class="pasivos">N/A</span>
+	              , Pat.: $<span class="patrimonio">N/A</span>
+	       	</div>  
+	  	</div><!-- Footer content -->    
+ 	</form>    
+ </div><!-- ingresarMovimientoPage div -->        

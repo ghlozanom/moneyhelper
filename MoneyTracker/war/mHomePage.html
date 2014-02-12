@@ -1,0 +1,58 @@
+
+
+
+<div data-role="page" id="homePage" >
+	<div data-role="header" data-theme="b" >
+		<h1>I, Accountant</h1>
+   	</div>
+
+	<div data-role="content" id="mainContent">
+	
+		<form id="verCuentaUsuarioForm" action="/verCuentaUsuario" method="post" data-ajax="false"  >
+			<input id="idCuentaUsuario" type="hidden" name="idCuentaUsuario" value="">
+			<input id="nombreCuentaUsuario" type="hidden" name="nombreCuentaUsuario" value="">
+		<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+			<h3>
+				<span class="ui-li-aside ui-li-desc"><strong><span class="activos">N/A</span> </strong>EUR</span>Activos
+			</h3>
+					
+			<ul id="listaCuentasUsuarioActivos" data-role="listview" data-inset="true"></ul>
+	
+		</div>
+
+		<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+			<h3>
+				<span class="ui-li-aside ui-li-desc"><strong><span class="pasivos">N/A</span> </strong>EUR</span>Pasivos
+			</h3>
+			<ul id="listaCuentasUsuarioPasivos" data-role="listview" data-inset="true"></ul>
+		</div>
+
+		<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+			<h3>
+				<span class="ui-li-aside ui-li-desc"><strong><span class="patrimonio">N/A</span> </strong>EUR</span>Patrimonio
+			</h3>
+			<ul id="listaCuentasUsuarioPatrimonio" data-role="listview" data-inset="true"></ul>
+		</div>		
+		
+		<ul data-role="listview" data-inset="true" >
+			<li>
+				<a href="#verGastosPage">Gastos</a>
+			</li>
+		</ul>
+		
+		</form>			
+	</div>
+	
+	<div data-role="footer" data-position="fixed" data-id="footerNav" data-theme="b">
+		<div data-role="navbar" data-iconpos="top">
+			<ul>
+				<li><a href="#homePage" data-icon="info" 
+				class="ui-btn-active ui-state-persist">Cuentas</a></li>
+				<li><a href="#verMovimientosPage" data-icon="gear">Movimientos</a></li>
+				<li><a href="#userPage" data-icon="gear">User</a></li>
+			</ul>
+		</div>
+		<!-- /navbar -->
+	</div>
+	<!-- Footer content -->		 
+</div>   

@@ -1,0 +1,55 @@
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button, .ui-loader {
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 90%;
+}   
+
+.small-text {
+    font-size: smaller;
+    line-height: 1.5em;
+    text-align: left;
+}        
+
+.padding-left09 {
+    padding-left: 9px;
+}
+.xsmall-text {
+    font-size: x-small;
+    line-height: 1.3em;
+}    
+
+.ui-page {
+    background: #CFDFEE !important;
+}        
+
+h2 {
+    font-size: 1.1em;
+    margin: 0.7em 0 0;
+}            
+
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button, .ui-loader {
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 90% !important;
+}
+
+/* Para que este estilo? 
+.ui-btn-inner {
+    font-size: 90% !important;
+    white-space: nowrap;
+}
+*/
+                 
+
+.ui-loader-background {
+    width:100%;
+    height:100%;
+    top:0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display:none;
+    position: fixed;
+    z-index:100;
+}       
+
+.ui-loading .ui-loader-background {
+    display:block;
+}  			             
